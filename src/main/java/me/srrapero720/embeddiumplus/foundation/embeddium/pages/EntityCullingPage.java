@@ -9,27 +9,23 @@ import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatte
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
-import me.srrapero720.embeddiumplus.EmbeddiumPlus;
 import me.srrapero720.embeddiumplus.EmbyConfig;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.srrapero720.embeddiumplus.foundation.embeddium.EmbPlusOptions.STORAGE;
-
 public class EntityCullingPage extends OptionPage {
-    public static final OptionIdentifier<Void> ID = OptionIdentifier.create(new ResourceLocation(EmbeddiumPlus.ID, "culling"));
+    private static final SodiumOptionsStorage performanceOptionsStorage = new SodiumOptionsStorage();
+
     public EntityCullingPage() {
-        super(ID, Component.translatable("embeddium.plus.options.culling.page"), create());
+        super(Component.translatable("embeddium.plus.options.culling.page"), create());
     }
 
     private static ImmutableList<OptionGroup> create() {
         final List<OptionGroup> groups = new ArrayList<>();
 
-        var enableDistanceChecks = OptionImpl.createBuilder(boolean.class, STORAGE)
+        var enableDistanceChecks = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.entity.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.entity.desc"))
                 .setControl(TickBoxControl::new)
@@ -42,7 +38,7 @@ public class EntityCullingPage extends OptionPage {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
-        var maxEntityDistance = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxEntityDistance = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.entity.distance.horizontal.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.entity.distance.horizontal.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 192, 8, ControlValueFormatter.biomeBlend()))
@@ -56,7 +52,7 @@ public class EntityCullingPage extends OptionPage {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
-        var maxEntityDistanceVertical = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxEntityDistanceVertical = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.entity.distance.vertical.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.entity.distance.vertical.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 64, 4, ControlValueFormatter.biomeBlend()))
@@ -78,7 +74,7 @@ public class EntityCullingPage extends OptionPage {
                 .build()
         );
 
-        var monsterDistanceChecks = OptionImpl.createBuilder(boolean.class, STORAGE)
+        var monsterDistanceChecks = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.monster.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.monster.desc"))
                 .setControl(TickBoxControl::new)
@@ -91,7 +87,7 @@ public class EntityCullingPage extends OptionPage {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
-        var maxMonsterDistance = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxMonsterDistance = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.monster.distance.horizontal.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.monster.distance.horizontal.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 192, 8, ControlValueFormatter.biomeBlend()))
@@ -105,7 +101,7 @@ public class EntityCullingPage extends OptionPage {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
-        var maxMonsterDistanceVertical = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxMonsterDistanceVertical = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.monster.distance.vertical.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.monster.distance.vertical.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 64, 4, ControlValueFormatter.biomeBlend()))
@@ -127,7 +123,7 @@ public class EntityCullingPage extends OptionPage {
         );
 
 
-        var enableTileDistanceChecks = OptionImpl.createBuilder(boolean.class, STORAGE)
+        var enableTileDistanceChecks = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.tiles.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.tiles.desc"))
                 .setControl(TickBoxControl::new)
@@ -141,7 +137,7 @@ public class EntityCullingPage extends OptionPage {
                 .build();
 
 
-        var maxTileEntityDistance = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxTileEntityDistance = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.tile.distance.horizontal.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.tile.distance.horizontal.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 256, 8, ControlValueFormatter.biomeBlend()))
@@ -154,7 +150,7 @@ public class EntityCullingPage extends OptionPage {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
-        var maxTileEntityDistanceVertical = OptionImpl.createBuilder(int.class, STORAGE)
+        var maxTileEntityDistanceVertical = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.culling.tile.distance.vertical.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.culling.tile.distance.vertical.desc"))
                 .setControl((option) -> new SliderControl(option, 16, 64, 4, ControlValueFormatter.biomeBlend()))

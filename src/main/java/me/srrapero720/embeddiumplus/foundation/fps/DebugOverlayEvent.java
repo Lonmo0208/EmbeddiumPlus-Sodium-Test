@@ -34,6 +34,7 @@ public class DebugOverlayEvent {
     private static int avgFPS = -1;
     private static int gpuPercent = -1;
     private static int memUsage = -1;
+    private static long time = Util.getMillis();
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onRenderOverlayItem(RenderGuiOverlayEvent.Pre event) {

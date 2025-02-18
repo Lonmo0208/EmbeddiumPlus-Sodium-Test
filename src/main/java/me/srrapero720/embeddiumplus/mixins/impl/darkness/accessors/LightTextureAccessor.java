@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(LightTexture.class)
 public interface LightTextureAccessor {
     @Accessor("blockLightRedFlicker")
-    float embPlus$getFlicker();
+    float getFlicker();
 
     @Accessor("updateLightTexture")
-    boolean embPlus$isDirty();
+    boolean isDirty();
 }

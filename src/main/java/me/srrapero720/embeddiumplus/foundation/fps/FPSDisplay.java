@@ -18,6 +18,10 @@ public class FPSDisplay {
         return this;
     }
 
+    public FPSDisplay append(Component component) {
+        return append(component.getString());
+    }
+
     public FPSDisplay append(ChatFormatting formatting) {
         return append(formatting.toString());
     }

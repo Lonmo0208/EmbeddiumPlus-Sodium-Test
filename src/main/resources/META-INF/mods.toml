@@ -2,6 +2,7 @@ modLoader="javafml" #mandatory
 loaderVersion="${fgrange}"
 license="${modlicense}"
 issueTrackerURL="https://github.com/${github_project}/issues"
+displayTest="IGNORE_SERVER_VERSION"
 
 [[mods]]
     modId="${modid}"
@@ -12,7 +13,7 @@ issueTrackerURL="https://github.com/${github_project}/issues"
     authors="${modauthor}" #optional
     credits="${modcredits}"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/embeddiumplus"
-    description='''${moddesc}'''
+    description='''${mod_description}'''
 
 [[dependencies.${modid}]]
     modId="forge"
@@ -39,5 +40,12 @@ issueTrackerURL="https://github.com/${github_project}/issues"
     modId="zume"
     mandatory=false
     versionRange="${zumerange}"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.${modid}]]
+    modId="textrues_embeddium_options"
+    mandatory=false
+    versionRange="*"
     ordering="AFTER"
     side="CLIENT"
