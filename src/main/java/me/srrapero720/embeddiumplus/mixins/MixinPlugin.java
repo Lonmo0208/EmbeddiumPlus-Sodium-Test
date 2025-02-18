@@ -22,8 +22,8 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if (targetClassName.contains("jei_rei_emi.Rei") && !EmbyTools.isModInstalled("roughlyenoughitems")) return false;
         if (targetClassName.contains("jei_rei_emi.Emi") && !EmbyTools.isModInstalled("emi")) return false;
 
-        // go ahead
         return true;
+        // go ahead
     }
 
     @Override
